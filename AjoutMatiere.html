@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <H1>Veuillez remplir correctement les champs de ce formulaire</H1>
+    <form action="AjoutMatiere.php" method="post" id="myForm">
+        <table>
+            <tr>
+                <td>Reference:</td>
+                <td><input type="text" name="reference" id="Reference"></td>
+                <td><span id="error1"></span></td>
+            </tr>
+            <tr>
+                <td>Libellé:</td>
+                <td><input type="text" name="libelle" id="Libelle"></td>
+                <td><span id="error2"></span></td>
+            </tr>
+            <tr>
+                <td>Coef:</td>
+                <td><input type="number" name="coef" id="Coef"></td>
+                <td><span id="error3"></span></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Enregistrer"></td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        let myForm = document.getElementById('myForm');
+
+        myForm.addEventListener('submit',function(e){
+            let ref = document.getElementById('Reference');
+            
+            if (ref.value.trim()=="") {
+            let myError = document.getElementById('error1')
+
+            myError.innerHTML = "Ce champ est obligatoire";
+            myError.style.color ="red";
+            e.preventDefault();
+            }
+
+            let Lib = document.getElementById('Libelle');
+            
+            if (Lib.value.trim()=="") {
+            let myError = document.getElementById('error2')
+
+            myError.innerHTML = "Ce champ est obligatoire";
+            myError.style.color ="red";
+            e.preventDefault();
+            }
+
+            let coef = document.getElementById('Coef');
+            
+            if (coef.value.trim()=="") {
+            let myError = document.getElementById('error3')
+
+            myError.innerHTML = "Ce champ est obligatoire";
+            myError.style.color ="red";
+            e.preventDefault();
+            }
+
+        });
+    </script>
+</body>
+</html>

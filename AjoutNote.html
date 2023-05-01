@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <H1>Veuillez remplir correctement les champs de ce formulaire</H1>
+    <form action="AjoutNote.php" method="post" id="myForm">
+        <table>
+            <tr>
+                <td>Numero Etudiant:</td>
+                <td><input type="text" name="numetudiant" id="Numetudiant"></td>
+                <td><span id="error1"></span></td>
+            </tr>
+            <tr>
+                <td>Reference:</td>
+                <td><input type="text" name="reference" id="Reference"></td>
+                <td><span id="error2"></span></td>
+            </tr>
+            <tr>
+                <td>Note CC:</td>
+                <td><input type="float" name="cc" id="Cc"></td>
+                <td><span id="error3"></span></td>
+            </tr>
+            <tr>
+                <td>Note DS:</td>
+                <td><input type="float" name="ds" id="Ds"></td>
+                <td><span id="error4"></span></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Enregistrer"></td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        let myForm = document.getElementById('myForm');
+
+        myForm.addEventListener('submit',function(e){
+
+            let num = document.getElementById('Numetudiant');
+            
+            if (num.value.trim()=="") {
+            let myError = document.getElementById('error1')
+
+            myError.innerHTML = "Ce champ est obligatoire";
+            myError.style.color ="red";
+            e.preventDefault();
+            }
+
+            let ref = document.getElementById('Reference');
+            
+            if (ref.value.trim()=="") {
+            let myError = document.getElementById('error2')
+
+            myError.innerHTML = "Ce champ est obligatoire";
+            myError.style.color ="red";
+            e.preventDefault();
+            }
+
+            let cc = document.getElementById('Cc');
+            
+            if (cc.value.trim()=="") {
+            let myError = document.getElementById('error3')
+
+            myError.innerHTML = "Ce champ est obligatoire";
+            myError.style.color ="red";
+            e.preventDefault();
+            }
+
+            let ds = document.getElementById('Ds');
+            
+            if (ds.value.trim()=="") {
+            let myError = document.getElementById('error4')
+
+            myError.innerHTML = "Ce champ est obligatoire";
+            myError.style.color ="red";
+            e.preventDefault();
+            }
+
+            
+
+        });
+    </script>
+</body>
+</html>

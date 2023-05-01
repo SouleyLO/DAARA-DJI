@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <H1>Veuillez remplir correctement les champs de ce formulaire</H1>
+    <form action="AjoutSurveillant.php" method="post" id="myForm">
+        <table>
+            <tr>
+                <td>IDENTIFIANT</td>
+                <td><input type="text" name="identifiant" id="Identifiant"></td>
+                <td><span id="error1"></span></td>
+            </tr>
+            <tr>
+                <td>NOM</td>
+                <td><input type="text" name="nom" id="Nom"></td>
+                <td><span id="error2"></span></td>
+            </tr>
+            <tr>
+                <td>PRENOM</td>
+                <td><input type="text" name="prenom" id="Prenom"></td>
+                <td><span id="error3"></span></td>
+            </tr>
+            <tr>
+                <td>SEXE</td>
+                <td>
+                HOMME
+                    <input type="radio" name="sexe" id="Sexe" value="HOMME"/> 
+                FEMME
+                    <input type="radio" name="sexe" id="Sexe" value="FEMME"/>
+                </td>
+                <td><span id="error4"></span></td>
+            </tr>
+            <tr>
+                <td>Date de naissance:</td>
+                <td><input type="date" name="date" id="Date"></td>
+                <td><span id="error5"></span></td>
+            </tr>
+            <tr>
+                <td>MAIL</td>
+                <td><input type="email" name="mail" id="Mail"></td>
+                <td><span id="error6"></span></td>
+            </tr>
+            <tr>
+                <td>ADRESSE</td>
+                <td><input type="text" name="adresse" id="Adresse"></td>
+                <td><span id="error7"></span></td>
+            </tr>
+            <tr>
+                <td>Mot De Passe:</td>
+                <td><input type="password" name="motdepasse" id="Motdepasse"></td>
+                <td><span id="error8"></span></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><span id="letter"></span></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><span id="chiffre"></span></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><span id="longueur"></span></td>
+            </tr>
+            <tr>
+                <td>Confirmer Mot De Passe:</td>
+                <td><input type="password" id="Confirmer"></td>
+                <td><span id="error10"></span></td>
+                
+            </tr>
+            <tr>
+                <td><span id="error11"></span></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Enregistrer"></td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        let myForm = document.getElementById('myForm');
+
+        myForm.addEventListener('submit',function(e){
+            let num = document.getElementById('Identifiant');
+            
+            if (num.value.trim()=="") {
+            let myError = document.getElementById('error1')
+
+            myError.innerHTML = "Ce champ est obligatoire";
+            myError.style.color ="red";
+            e.preventDefault();
+            }
+
+            let nom = document.getElementById('Nom');
+            
+            if (nom.value.trim()=="") {
+            let myError = document.getElementById('error2')
+
+            myError.innerHTML = "Ce champ est obligatoire";
+            myError.style.color ="red";
+            e.preventDefault();
+            }
+
+            let prenom = document.getElementById('Prenom');
+            
+            if (prenom.value.trim()=="") {
+            let myError = document.getElementById('error3')
+
+            myError.innerHTML = "Ce champ est obligatoire";
+            myError.style.color ="red";
+            e.preventDefault();
+            }
+
+            let sexe = document.getElementById('Sexe');
+            
+            if (sexe.value.trim()=="") {
+            let myError = document.getElementById('error4')
+
+            myError.innerHTML = "Ce champ est obligatoire";
+            myError.style.color ="red";
+            e.preventDefault();
+            }
+
+            let date = document.getElementById('Date');
+            
+            if (date.value.trim()=="") {
+            let myError = document.getElementById('error5')
+
+            myError.innerHTML = "Ce champ est obligatoire";
+            myError.style.color ="red";
+            e.preventDefault();
+            }
+
+            let mail = document.getElementById('Mail');
+            
+            if (mail.value.trim()=="") {
+            let myError = document.getElementById('error6')
+
+            myError.innerHTML = "Ce champ est obligatoire";
+            myError.style.color ="red";
+            e.preventDefault();
+            }
+
+            let adresse = document.getElementById('Adresse');
+            
+            if (adresse.value.trim()=="") {
+            let myError = document.getElementById('error7')
+
+            myError.innerHTML = "Ce champ est obligatoire";
+            myError.style.color ="red";
+            e.preventDefault();
+            }
+
+            let mdp = document.getElementById('Motdepasse');
+            
+            if (mdp.value.trim()=="") {
+            let myError = document.getElementById('error8')
+
+            myError.innerHTML = "Ce champ est obligatoire";
+            myError.style.color ="red";
+            e.preventDefault();
+            }
+
+            let confirm = document.getElementById('Confirmer');
+            
+            if (confirm.value.trim()=="") {
+            let myError = document.getElementById('error10')
+
+            myError.innerHTML = "Ce champ est obligatoire";
+            myError.style.color ="red";
+            e.preventDefault();
+            }
+
+            if (confirm.value.trim()!=mdp.value.trim()) {
+                let myError = document.getElementById('error11')
+
+                myError.innerHTML = "Mot de passe incorrecte";
+                myError.style.color ="red";
+                e.preventDefault();
+            }
+
+            let upperCaseLetters = /[A-Z]/
+            if (!(mdp.value.match(upperCaseLetters))) {
+                let letter = document.getElementById('letter');
+
+                letter.innerHTML = "Le mot de passe doit contenir au moins une lettre majuscule";
+                letter.style.color ="red";
+                e.preventDefault();
+            }
+
+            let chiffreMdp = /[0-9]/
+            if (!(mdp.value.match(chiffreMdp))) {
+                let chiffre = document.getElementById('chiffre');
+
+                chiffre.innerHTML = "Le mot de passe doit contenir au moins un chiffre";
+                chiffre.style.color ="red";
+                e.preventDefault();
+            }
+
+            if (mdp.value.length < 8) {
+                let longueur = document.getElementById('longueur');
+
+                longueur.innerHTML = "Le mot de passe doit contenir au moins 8 caractères";
+                longueur.style.color ="red";
+                e.preventDefault();
+            }
+
+            
+            
+          
+
+        });
+    </script>
+</body>
+</html>
